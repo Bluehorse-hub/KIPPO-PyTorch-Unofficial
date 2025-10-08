@@ -1,0 +1,18 @@
+# =============================
+# KIPPO Unofficial Implementation
+# =============================
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Experiment Outputs ---
+experiments/
+
+# --- Scripts not for release ---
+make_gif.py
+
+# --- Videos / GIFs ---
+video/
+make_gif.py
