@@ -59,7 +59,7 @@ def main(args=None):
     while not done:
         with torch.no_grad():
             latent_state = phi_x(state)
-            _, _, action_tanh = actor.sample_action(latent_state)
+            _, _, action_tanh = actor.sample_action(latent_state, test=True)
         state, reward, terminated, truncated, _ = env.step(action_tanh.cpu().numpy())
         state = torch.tensor(state, dtype=torch.float32, device=device)
         done = terminated or truncated

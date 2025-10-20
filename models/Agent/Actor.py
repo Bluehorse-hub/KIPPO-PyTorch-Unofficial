@@ -40,10 +40,14 @@ class MLPPolicy(nn.Module):
         
         return mean, std
     
-    def sample_action(self, latent_state):
+    def sample_action(self, latent_state, test=False):
         policy = self.policy(latent_state)
-        action = policy.sample()
-        log_prob = policy.log_prob(action).sum(dim=-1)
+        if test == True:
+            action = policy.mean
+            log_prob = None
+        else:
+            action = policy.sample()
+            log_prob = policy.log_prob(action).sum(dim=-1)
         action_tanh = torch.tanh(action)
         return action, log_prob, action_tanh
     
